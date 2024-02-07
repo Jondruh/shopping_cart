@@ -11,7 +11,7 @@ const App = () => {
     setData(things);
   }, []);
 
-  const handleNewProduct = async (product) => {
+  const handleNewProduct = async (product, callback) => {
     const headers = {
       "Content-Type": "application/json",
     };
@@ -22,8 +22,11 @@ const App = () => {
     };
 
     try {
-      let res = await fetch("api/products", options);
+      let res = await fetch("/api/products", options);
       let body = await res.json();
+      if (callback) {
+        callback();
+      }
       console.log(body);
     } catch (e) {
       console.error(e);

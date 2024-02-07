@@ -7,7 +7,11 @@ const ProductForm = ({ setShowForm, onNewProduct }) => {
 
   const handleNewProduct = (e) => {
     e.preventDefault();
-    onNewProduct({ title: name, price: price, quantity: quantity });
+    onNewProduct({ title: name, price: price, quantity: quantity }, clearForm);
+  };
+
+  const clearForm = () => {
+    setShowForm(false);
   };
 
   return (
