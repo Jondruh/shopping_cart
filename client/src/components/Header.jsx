@@ -1,11 +1,10 @@
 import Cart from "./Cart";
 
-const Header = () => {
-  // return e("header", {}, [e("h1", {}, ["The Shop!"]), Cart()]);
+const Header = ({ cart }) => {
   return (
     <header>
       <h1>The Shop!</h1>
-      <Cart />
+      <Cart cart={cart} />
     </header>
   );
 };

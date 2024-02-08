@@ -1,13 +1,19 @@
-const Cart = () => {
+import CartList from "./CartList";
+
+const Cart = ({ cart }) => {
+  console.log("this is the cart component: ", cart);
   return (
     <>
       <div className="cart">
         <h2>Your Cart</h2>
-        <p>Your cart is empty</p>
-        <p>Total: $0</p>
-        <button className="checkout" disabled>
-          Checkout
-        </button>
+        {cart.length == 0 ? (
+          <p>Your cart is empty</p>
+        ) : (
+          <CartList cart={cart} />
+        )}
+        <div className="checkout-button">
+          <button className="checkout">Checkout</button>
+        </div>
       </div>
     </>
   );
