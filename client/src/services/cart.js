@@ -1,6 +1,7 @@
 export const getCart = async () => {
   let res = await fetch("/api/cart");
-  return res.json();
+  let body = await res.json();
+  return body;
 };
 
 export const addToCart = async (productId) => {
@@ -19,5 +20,6 @@ export const addToCart = async (productId) => {
 
 export const checkoutCart = async () => {
   let res = await fetch("/api/checkout", { method: "POST" });
-  return res.json();
+  let body = await res.json();
+  return body;
 };

@@ -1,7 +1,7 @@
 export const getProducts = async () => {
   let res = await fetch("/api/products");
-  let products = await res.json();
-  return products;
+  let body = await res.json();
+  return body;
 };
 
 export const addToProducts = async (product) => {
@@ -32,5 +32,6 @@ export const editProduct = async (id, product) => {
     body: JSON.stringify(product),
   };
   let res = await fetch(`/api/products/${id}`, options);
-  return res.json();
+  let body = await res.json();
+  return body;
 };
