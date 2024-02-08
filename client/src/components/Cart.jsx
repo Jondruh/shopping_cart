@@ -1,7 +1,6 @@
 import CartList from "./CartList";
 
 const Cart = ({ cart }) => {
-  console.log("this is the cart component: ", cart);
   return (
     <>
       <div className="cart">

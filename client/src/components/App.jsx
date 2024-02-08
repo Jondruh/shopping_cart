@@ -8,7 +8,7 @@ import {
   removeFromProducts,
   editProduct,
 } from "../services/products";
-import { getCart, addToCart, checkoutCart } from "../services/cart";
+import { getCart, addToCart } from "../services/cart";
 
 const App = () => {
   let [products, setProducts] = useState([]);
