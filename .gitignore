@@ -1,3 +1,5 @@
-/node_modules
-
+client/node_modules
+client/.parcel-cache
+client/dist
 .env
+server/node_modules
