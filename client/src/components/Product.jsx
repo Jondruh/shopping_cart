@@ -26,7 +26,11 @@ const Product = ({ product, onDeleteProduct, onEditProduct, onAddToCart }) => {
       <div className="product-details">
         <ProductItem product={product} />
         <div className="actions product-actions">
-          <button onClick={addToCart} className="add-to-cart">
+          <button
+            onClick={addToCart}
+            className="add-to-cart"
+            disabled={product.quantity === 0}
+          >
             Add to Cart
           </button>
           <button onClick={handleEdit} className="edit">
