@@ -1,4 +1,4 @@
-import EditProduct from "./EditProduct";
+import EditProductForm from "./EditProductForm";
 import { useState } from "react";
 
 const Product = ({ product, onDeleteProduct, onEditProduct, onAddToCart }) => {
@@ -29,7 +29,7 @@ const Product = ({ product, onDeleteProduct, onEditProduct, onAddToCart }) => {
         <span>X</span>
       </button>
       {showForm ? (
-        <EditProduct
+        <EditProductForm
           product={product}
           onEditProduct={onEditProduct}
           setShowForm={setShowForm}
