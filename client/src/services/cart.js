@@ -20,6 +20,5 @@ export const addToCart = async (productId) => {
 
 export const checkoutCart = async () => {
   let res = await fetch("/api/checkout", { method: "POST" });
-  let body = await res.json();
-  return body;
+  return res;
 };

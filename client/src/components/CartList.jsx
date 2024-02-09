@@ -10,7 +10,7 @@ const CartList = ({ cart }) => {
       </thead>
       <tbody>
         {cart.map((item) => (
-          <tr key={item._id}>
+          <tr key={item.productId}>
             <td>{item.title}</td>
             <td>{item.quantity}</td>
             <td>{item.price}</td>

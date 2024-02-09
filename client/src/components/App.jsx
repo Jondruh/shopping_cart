@@ -8,7 +8,7 @@ import {
   removeFromProducts,
   editProduct,
 } from "../services/products";
-import { getCart, addToCart } from "../services/cart";
+import { getCart, addToCart, checkoutCart } from "../services/cart";
 
 const App = () => {
   let [products, setProducts] = useState([]);
@@ -82,8 +82,14 @@ const App = () => {
   const handleAddToCart = async (productId) => {
     try {
       let res = await addToCart(productId);
-      let updatedCart = [...cart, res.item];
-      setCart(updatedCart);
+      let itemInd = cart.findIndex((item) => item.productId === productId);
+      if (itemInd !== -1) {
+        let updatedCart = [...cart];
+        updatedCart[itemInd] = res.item;
+        setCart(updatedCart);
+      } else {
+        setCart([...cart, res.item]);
+      }
 
       let updatedProducts = products.map((p) => {
         if (p._id === productId) {
@@ -98,9 +104,18 @@ const App = () => {
     }
   };
 
+  const handleCheckout = async () => {
+    try {
+      await checkoutCart();
+      setCart([]);
+    } catch (e) {
+      console.error(e);
+    }
+  };
+
   return (
     <div id="app">
-      <Header cart={cart} />
+      <Header cart={cart} onCheckout={handleCheckout} />
       <main>
         <ProductListing
           data={products}
