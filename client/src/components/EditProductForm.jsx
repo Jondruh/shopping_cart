@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const EditProductForm = ({ product, setShowForm, onEditProduct }) => {
+const EditProductForm = ({ product, onCancelEdit, onEditProduct }) => {
   const [name, setName] = useState(product.title);
   const [price, setPrice] = useState(product.price);
   const [quantity, setQuantity] = useState(product.quantity);
@@ -15,7 +15,7 @@ const EditProductForm = ({ product, setShowForm, onEditProduct }) => {
   };
 
   const clearForm = () => {
-    setShowForm(false);
+    onCancelEdit();
   };
 
   return (
@@ -59,7 +59,7 @@ const EditProductForm = ({ product, setShowForm, onEditProduct }) => {
         </div>
         <div className="actions form-actions">
           <button type="submit">Update</button>
-          <button onClick={() => setShowForm(false)} type="button">
+          <button onClick={clearForm} type="button">
             Cancel
           </button>
         </div>

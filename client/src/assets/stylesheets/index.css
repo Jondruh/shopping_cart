@@ -94,6 +94,7 @@ li {
 }
 
 button {
+  margin: 1px;
   padding: 5px 12px 5px;
   background: #07575b;
   color: #fff;

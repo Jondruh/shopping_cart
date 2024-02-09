@@ -1,8 +1,17 @@
+import React, { useState } from "react";
+import ProductItem from "./ProductItem";
 import EditProductForm from "./EditProductForm";
-import { useState } from "react";
 
 const Product = ({ product, onDeleteProduct, onEditProduct, onAddToCart }) => {
-  let [showForm, setShowForm] = useState(false);
+  const [isEditing, setIsEditing] = useState(false);
+
+  const handleEdit = () => {
+    setIsEditing(true);
+  };
+
+  const handleCancelEdit = () => {
+    setIsEditing(false);
+  };
 
   const deleteProduct = () => {
     onDeleteProduct(product._id);
@@ -14,25 +23,26 @@ const Product = ({ product, onDeleteProduct, onEditProduct, onAddToCart }) => {
 
   return (
     <li className="product">
-      <h3>{product.title}</h3>
-      <p className="price">{product.price}</p>
-      <p className="quantity">{product.quantity} left in stock </p>
-      <div className="actions product-actions">
-        <button onClick={addToCart} className="add-to-cart">
-          Add to Cart
-        </button>
-        <button onClick={() => setShowForm(true)} className="edit">
-          Edit
+      <div className="product-details">
+        <ProductItem product={product} />
+        <div className="actions product-actions">
+          <button onClick={addToCart} className="add-to-cart">
+            Add to Cart
+          </button>
+          <button onClick={handleEdit} className="edit">
+            Edit
+          </button>
+        </div>
+        <button onClick={deleteProduct} className="delete-button">
+          <span>X</span>
         </button>
       </div>
-      <button onClick={deleteProduct} className="delete-button">
-        <span>X</span>
-      </button>
-      {showForm ? (
+
+      {isEditing ? (
         <EditProductForm
           product={product}
+          onCancelEdit={handleCancelEdit}
           onEditProduct={onEditProduct}
-          setShowForm={setShowForm}
         />
       ) : null}
     </li>
