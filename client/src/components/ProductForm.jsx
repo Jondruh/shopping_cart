@@ -52,7 +52,7 @@ const ProductForm = ({ setShowForm, onNewProduct }) => {
         ></input>
       </div>
       <div className="actions form-actions">
-        <button type="submit">Add</button>
+        <button type="submit">Add Product</button>
         <button onClick={() => setShowForm(false)} type="button">
           Cancel
         </button>
